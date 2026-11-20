@@ -1,0 +1,26 @@
+[project]
+name = "stepwise"
+version = "0.1.0"
+description = "Durable runtime for LLM agents: crash-safe checkpoints, exactly-once tool effects, human approval and cost budgets."
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=2.14",
+    "asyncpg>=0.31",
+    "fastapi>=0.141",
+    "pydantic>=2.13",
+    "pydantic-settings>=2.6",
+    "uvicorn[standard]>=0.52",
+]
+
+[project.optional-dependencies]
+dev = ["httpx>=0.28", "pytest>=9.2", "pytest-asyncio>=1.0", "pytest-cov>=6.0", "ruff>=0.8"]
+
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["stepwise*"]
+
+[tool.setuptools.package-data]
+stepwise = ["migrations/*.sql"]

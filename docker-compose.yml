@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: stepwise
+      POSTGRES_PASSWORD: stepwise
+      POSTGRES_DB: stepwise
+    ports:
+      - "5546:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U stepwise"]
+      interval: 2s
+      timeout: 2s
+      retries: 20
